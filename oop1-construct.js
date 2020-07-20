@@ -1,17 +1,60 @@
-//1. Create a Class called WhyClass.  This class should have one property, and two methods.  THe property is called "purpose", and stores a string.  This string should clearly explain why classes are used in Object Oriented Programming.  The first method is called explain().  This method should print the contents stored in the purpose 'field' of the class.  The second method is called pieces().  This 2nd method should print out the various parts that are essential to building a class.  Instantiate the class, and invoke the method so the results are showing in the console once this file is run.
+//1. Create a Class called WhyClass.  This class should have one property, and two methods.  
+//THe property is called "purpose", and stores a string.  
+//This string should clearly explain why classes are used in Object Oriented Programming.  
+//The first method is called explain().  This method should print the contents stored in the purpose 'field' of the class.  
+//The second method is called pieces().  This 2nd method should print out the various parts that are essential to building a class.  
+//Instantiate the class, and invoke the method so the results are showing in the console once this file is run.
 
 //your code here...
+class WhyClass {
+    constructor(purpose){
+        this.purpose = purpose;
+    }
+
+    explain(purpose) {
+        console.log(purpose);
+    }
+
+    pieces() {
+        return 'Attributes, Constructors, Accessors, Public Interface Methods, Private Implementation Methods, and Objects';
+    }
+}
+
+let newClass = new WhyClass();
+newClass.purpose = "creating objects (a particular data structure), providing initial values for state (member variables or attributes), and implementations of behavior (member functions or methods)."
+newClass.explain(newClass.purpose);
+console.log(newClass.pieces());
 
 
-
-/*2. You are exploring the rainforests of the Amazon.  You have observed many different types of wildlife on your excursion.  To jog your memory, some different types of wildlife that you observed are found in the following URL : https://www.ietravel.com/blog/amazon-rainforest-animals-beginners-guide-21-species.  Feel free to use other resources online if you wish.
+/*2. You are exploring the rainforests of the Amazon.  You have observed many different types of wildlife on your excursion.  
+To jog your memory, some different types of wildlife that you observed are found in the following URL : https://www.ietravel.com/blog/amazon-rainforest-animals-beginners-guide-21-species.  
+Feel free to use other resources online if you wish.
 
 Create a class that can categorize at least 6 of the creatures that you recall observing the Amazon.  Each creature should have 3 unique characteristics, and 2 unique actions that it can do. */
 
 
 //your code here...
 
+class ExoticAnimal{
+    constructor(name, mainColor, sound){
+        this.name = name;
+        this.mainColor = mainColor;
+        this.sound = sound;
+    }
 
+    eat(){
+        return 'nom nom nom';
+    }
+    speak(){
+            return sound;
+    }
+}
+let iguana = new ExoticAnimal("Iguana", "green", "...");
+let harpyEagle = new ExoticAnimal("Harpy Eagle", "grey", "squawk");
+let anaconda = new ExoticAnimal("Anaconda", "green", "sssss");
+let jesusLizard = new ExoticAnimal("Jesus Lizard", "dark grey", "...");
+let sloth = new ExoticAnimal("Sloth", "Brown", "hehehe");
+let macaw = new ExoticAnimal("Macaw", "Red", "Caw");
 
 
 /*3. Convert the following Object Literals into a general class called Shape, and instantiate the class to generate the object literals
@@ -20,6 +63,42 @@ Create a class that can categorize at least 6 of the creatures that you recall o
 
 class Shape {
     //your code here...
+    constructor(name, sides, base, height, radius){
+        this.name = name;
+        this.sides = sides;
+        this.base = base;
+        this.height = height;
+        this.radius = radius;
+    }
+
+    calcTriHeight(sides){
+        return (Math.pow(sides[0], 2) + (Math.pow(sides[1], 2)));
+    }
+
+    calcAreaTriangle(base, name) {
+        return (`${name}'s area is calculated to be : ${.5 * base * calcTriHeight(sides)}`);
+    }
+
+    calcPerimeterTriangle(sides, base, name)
+    {
+        return (`${name}'s perimeter is calculated to be : ${(base) + (sides[0] + sides[1]) }`);
+    }
+
+    calcAreaRectangle(length, width, name){
+        return (`${name}'s area is calculated to be : ${length * width}`);
+    }
+
+    calcPerimeterRectangle(length, width, name){
+        return (`${name}'s perimeter is calculated to be : ${(2 * length) + (2 * width) }`);
+    }
+
+    caclAreaCircle(radius, name) {
+        return (`${name}'s area is calculated to be : ${(Math.PI * radius**2).toFixed(2)}`);
+    }
+
+    calcCircumference(radius, name) {
+        return (`${this.name}'s circumference is calculated to be : ${(2 * Math.PI * radius).toFixed(2)}`);
+    }
 }
 
 

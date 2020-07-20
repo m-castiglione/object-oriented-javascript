@@ -1,6 +1,8 @@
 
 /*
-1. Create a Abstract Creature class that is NOT allowed to be instantiated. Find a way to prevent this class from being instantiated with an instance.  In the Creature class, include two abstract methods.  move(), and act().  These methods are NOT allowed to be invoked from the Abstract class, so throw an error in these methods if they are invoked by any inherited sub-classes.  
+1. Create a Abstract Creature class that is NOT allowed to be instantiated. Find a way to prevent this class from being instantiated with an instance.  
+In the Creature class, include two abstract methods.  move(), and act().  
+These methods are NOT allowed to be invoked from the Abstract class, so throw an error in these methods if they are invoked by any inherited sub-classes.  
 
 Create at least 3 sub-classes that inherit from the Abstract Creature Class.  Example sub-classes are: 
     -Human
@@ -9,7 +11,8 @@ Create at least 3 sub-classes that inherit from the Abstract Creature Class.  Ex
     -Reptile
     -Fish
 
-These sub-classes MUST implement the abstract methods of move() and act(), which are found on the abstract Creature class. In addition to the 2 abstract methods, implement 1 unique method on each sub-class.  Also, each sub-class MUST have at least 2 unique property fields on them.  Example property fields are:
+These sub-classes MUST implement the abstract methods of move() and act(), which are found on the abstract Creature class. 
+In addition to the 2 abstract methods, implement 1 unique method on each sub-class.  Also, each sub-class MUST have at least 2 unique property fields on them.  Example property fields are:
     -name
     -weight
     -food
@@ -19,17 +22,89 @@ These sub-classes MUST implement the abstract methods of move() and act(), which
 
     class Creature {
         //your code here...
+
+        constructor() {
+            if(this.constructor === Creature) {
+                throw new Error("Unable to instantiate this Abstract Class");
+            }
+        }
+
+        move() {
+            throw new Error("This is an Abstract Method. Invoking is forbidden")
+        };
+
+        act() {
+            throw new Error("This is an Abstract Method. Invoking is forbidden")
+        };
     }
 
     class Human extends Creature {
         //your code here...
+        constructor(name, age, weight) {
+            this.name = name;
+            this.age = age;
+            this.weight = weight;
+        }
+
+        act() {
+            console.log("I am actin'");
+        }
+
+        move() {
+            console.log("I am movin'");
+        }
+
+        eat() {
+            console.log("I am eatin'");
+        }
+    }
+
+    class Cyborg extends Creature {
+        constructor(name, OS, weight) {
+            this.name = name;
+            this.OS = OS;
+            this.weight = weight;
+        }
+
+        act() {
+            console.log("I am actin'");
+        }
+
+        move() {
+            console.log("I am movin'");
+        }
+
+        useArmCannon() {
+            console.log("BOOM!");
+        }
+
+    }
+
+    class Unicorn extends Creature {
+        constructor(name, magicType, weight) {
+            this.name = name;
+            this.magicType = magicType;
+            this.weight = weight;
+        }
+
+        act() {
+            console.log("I am actin'");
+        }
+
+        move() {
+            console.log("I am movin'");
+        }
+
+        useMagic() {
+            console.log("Whish");
+        }
     }
 
 
 
-
 /*
-2. For the following Person class, modify the class methods, so the sub-class methods will successfully fire.  For the Teacher method, a set of methods have already been set up.  For the Student class, it will be up to you to determine how to set up the methods to fire in the Student sub-class.  :
+2. For the following Person class, modify the class methods, so the sub-class methods will successfully fire.  
+For the Teacher method, a set of methods have already been set up.  For the Student class, it will be up to you to determine how to set up the methods to fire in the Student sub-class.  :
 */
 
 class Person {
@@ -39,7 +114,7 @@ class Person {
         console.log(this.name + " is eating");
     }
 
-    sleep = () => {
+    sleep () {
         console.log(this.name + " is sleeping");
     }
 
@@ -53,7 +128,7 @@ class Person {
 
     explain() {
         //this function should contain a console.log() explaining what you had to do to get the correct functions to work, and the reasoning behind what you did.
-        console.log("this explain method should contain explain what you had to do to get the correct functions to work, and the reasoning behind what you did.");
+        console.log("by removing the arrow funcitons, the sub-classes take precdence");
     }
 
 }
@@ -68,11 +143,11 @@ class Teacher extends Person {
         this.name = name;
     }
 
-    eat() {
+    eat = () => {
         console.log(this.name + " loves to teach before eating");
     }
 
-    sleep() {
+    sleep = () => {
         console.log(this.name + " sleeps after preparing the lesson plan");
     }
 
@@ -80,7 +155,7 @@ class Teacher extends Person {
         console.log(this.name + " codes first, then teaches it the next day.");
     }
 
-    repeat() {
+    repeat = () => {
         console.log(this.name + " teaches, codes, eats, sleeps, and repeats");
     }
 }
@@ -88,6 +163,26 @@ class Teacher extends Person {
 
 class Student extends Person {
     //set up your methods in this student class, so all of these methods will override the methods from the super class.
+    constructor(name) {
+      super(name);
+      this.name = name;
+    }
+
+    eat = () => {
+      console.log(this.name + " studies, then eats");
+    }
+
+    sleep = () => {
+      console.log(this.name + " studies coding so much, that they dream about it in their sleep");
+    }
+
+    code = () => { 
+      console.log(this.name + " was first overwhelmed by coding, but kept at it, and now has become a coding guru!");
+    }
+
+    repeat = () => {
+      console.log(this.name + " keeps on studying, coding, eating, and sleeping, and puts it all on repeat.");
+    }
 
     //eat method should print out - <stduent name> studies, then eats
 
@@ -117,9 +212,6 @@ student.eat();
 student.sleep();
 student.code();
 student.repeat();
-
-
-
 
 //****************************************************************************************************************************************************************************************   
 //Bonus Exercise:
